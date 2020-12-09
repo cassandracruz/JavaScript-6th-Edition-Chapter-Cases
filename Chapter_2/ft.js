@@ -28,12 +28,6 @@ function resetForm(){
 	createEventListeners();
 }
 
-//create event listeners
-function createEventListeners(){
-	document.getElementById("photognum").addEventListener("change", calcStaff, false);
-	document.getElementById("photoghrs").addEventListener("change", calcStaff, false);
-}
-
 //calculates all cost based on staff and adds to total cost
 function calcStaff(){
 	var num = document.getElementById("photognum");
@@ -41,7 +35,28 @@ function calcStaff(){
 	totalCost -= photographerCost;
 	photographerCost = num.value * 100 * hrs.value;
 	totalCost += photographerCost;
-	document.getElementById("estimate").innerHTML = "$" + totalCost; }
+	document.getElementById("estimate").innerHTML = "$" + totalCost;
+ }
+
+// adds/substracts cost of memory book from total cost
+function toggleMembook(){
+	(document.getElementById("membook").checked === false) ? totalCost -= 250 : totalCost += 250; 
+	document.getElementById("estimate").innerHTML = "$" + totalCost;
+
+}
+
+function toggleRights(){
+	(document.getElementById("reprodrights").checked === false) ? totalCost -= 1250 : totalCost += 1250; 
+	document.getElementById("estimate").innerHTML = "$" + totalCost;
+}
+
+//create event listeners
+function createEventListeners(){
+	document.getElementById("photognum").addEventListener("change", calcStaff, false);
+	document.getElementById("photoghrs").addEventListener("change", calcStaff, false);
+	document.getElementById("membook").addEventListener("change", toggleMembook, false);
+	document.getElementById("reprodrights").addEventListener("change", toggleRights, false);
+}
 
 //resets form when page is reloaded
 window.addEventListener("load", resetForm, false);
