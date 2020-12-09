@@ -32,8 +32,9 @@ function resetForm(){
 function calcStaff(){
 	var num = document.getElementById("photognum");
 	var hrs = document.getElementById("photoghrs");
+	var distance = document.getElementById("distance");
 	totalCost -= photographerCost;
-	photographerCost = num.value * 100 * hrs.value;
+	photographerCost = num.value * 100 * hrs.value + distance.value * num.value;
 	totalCost += photographerCost;
 	document.getElementById("estimate").innerHTML = "$" + totalCost;
  }
@@ -56,6 +57,7 @@ function createEventListeners(){
 	document.getElementById("photoghrs").addEventListener("change", calcStaff, false);
 	document.getElementById("membook").addEventListener("change", toggleMembook, false);
 	document.getElementById("reprodrights").addEventListener("change", toggleRights, false);
+	document.getElementById("distance").addEventListener("change", calcStaff, false);
 }
 
 //resets form when page is reloaded
