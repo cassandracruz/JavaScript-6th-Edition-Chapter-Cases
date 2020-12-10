@@ -23,3 +23,10 @@
                  "Sodbusters", "Sodbusters", "Sodbusters",
                  "Combines", "Combines", "Combines", "(off)",
                  "(off)"];
+
+var gameLocation = ["away", "away", "away", "away", "home", "home",
+                    "home", "home", "home", "home", "home", "away",
+                    "away", "away", "away", "", "away", "away", "away",
+                    "away", "away", "away", "", "home", "home", "home",
+                    "home", "home", "home", "", ""];
+
