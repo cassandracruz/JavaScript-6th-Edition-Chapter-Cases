@@ -9,3 +9,17 @@
 
  *    Filename: tt.js
  */
+
+ // global variables
+ var daysOfWeek = ["Sunday", "Monday", "Tuesday","Wednesday", "Thursday", "Friday", "Saturday"]
+
+ var opponents = ["Lightning", "Combines", "Combines", "Combines",
+                 "Lightning", "Lightning", "Lightning", "Lightning", 
+                 "Barn Raisers", "Barn Raisers", "Barn Raisers", 
+                 "Sodbusters", "Sodbusters", "Sodbusters", 
+                 "Sodbusters", "(off)", "River Riders", 
+                 "River Riders", "River Riders", "Big Dippers", 
+                 "Big Dippers", "Big Dippers", "(off)", 
+                 "Sodbusters", "Sodbusters", "Sodbusters",
+                 "Combines", "Combines", "Combines", "(off)",
+                 "(off)"];
