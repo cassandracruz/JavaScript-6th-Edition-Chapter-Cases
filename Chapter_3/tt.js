@@ -55,10 +55,25 @@ function addCalendarDates()
     } while (i <= 31)
 }
 
+//function to place opponents in second p element
+//withing each table data cell that has an id
+
+function addGameInfo(){
+    var paragraphs ="";
+    for (var i = 0; i < 31; i++) 
+    {
+        var date = i + 1;
+        var tableCell = document.getElementById("08-"+ date);
+        paragraphs = tableCell.getElementsByTagName("p");
+        paragraphs[1].innerHTML += opponents[i];
+    }
+}
+
 //function to populate calendar
 function setUpPage(){
     addColumnHeaders();
     addCalendarDates();
+    addGameInfo();
 }
 //runs setUpPage() function when page loads
 window.addEventListener("load", setUpPage, false );
