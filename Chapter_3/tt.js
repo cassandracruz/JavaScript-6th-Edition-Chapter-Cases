@@ -74,12 +74,20 @@ function addGameInfo(){
 
         }//end if */
 
-        if (gameLocation[i] === "away"){
+       /* if (gameLocation[i] === "away"){
             paragraphs[1].innerHTML = "@ ";
 
         }//end if
         else{
             paragraphs[1].innerHTML = "vs ";
+        }*/
+        switch(gameLocation[i]){
+            case "away":
+                paragraphs[1].innerHTML = "@ ";
+                break;
+            case "home":
+                paragraphs[1].innerHTML = "vs ";
+                break;
         }
         paragraphs[1].innerHTML += opponents[i];
     }
