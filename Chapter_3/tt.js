@@ -41,5 +41,24 @@ function addColumnHeaders()
     }
 }
 
-//runs addColumnHeaders() function when page loads
-window.addEventListener("load", addColumnHeaders, false );
+//function to place day of month value in first p element
+//within each table data cell that has an id
+function addCalendarDates()
+{
+    var i = 1;
+    var paragraphs = "";
+    do {
+        var tableCell = document.getElementById("08-" + i);
+        paragraphs = tableCell.getElementsByTagName("p");
+        paragraphs[0].innerHTML = i;
+        i++
+    } while (i <= 31)
+}
+
+//function to populate calendar
+function setUpPage(){
+    addColumnHeaders();
+    addCalendarDates();
+}
+//runs setUpPage() function when page loads
+window.addEventListener("load", setUpPage, false );
