@@ -92,5 +92,10 @@ function setUpPage(){
     addCalendarDates();
     addGameInfo();
 }
-//runs setUpPage() function when page loads
-window.addEventListener("load", setUpPage, false );
+
+//runs setUpPage() function when page loads4
+if (window.addEventListener) {
+    window.addEventListener("load", setUpPage, false);
+} else if (window.attachEvent) {
+    window.attachEvent("onload", setUpPage);
+}
