@@ -59,14 +59,23 @@ function addCalendarDates()
 //withing each table data cell that has an id
 
 function addGameInfo(){
-    var paragraphs ="";
+    var paragraphs = "";
     for (var i = 0; i < 31; i++) 
     {
         var date = i + 1;
         var tableCell = document.getElementById("08-"+ date);
         paragraphs = tableCell.getElementsByTagName("p");
+        if (gameLocation[i] === "away"){
+            paragraphs[1].innerHTML = "@ ";
+
+        }//end if
+        if (gameLocation[i] === "home"){
+            paragraphs[1].innerHTML = "vs ";
+
+        }//end if
         paragraphs[1].innerHTML += opponents[i];
     }
+   
 }
 
 //function to populate calendar
