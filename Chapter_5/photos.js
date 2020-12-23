@@ -48,22 +48,26 @@ function zoomFig() {
 function createEventListeners(){
    var leftarrow = document.getElementById("leftarrow");
 
-   if(leftarrow.addEventListener)
-   {
+   if(leftarrow.addEventListener){
       leftarrow.addEventListener("click", leftArrow, false);
-   } else if(leftarrow.attachEvent)
-   {
+   } else if(leftarrow.attachEvent){
       leftarrow.attachEvent("onclick", leftArrow);
    }
 
    var rightarrow = document.getElementById("rightarrow");
 
-   if(rightarrow.addEventListener)
-   {
+   if(rightarrow.addEventListener){
       rightarrow.addEventListener("click", rightArrow, false);
-   } else if(rightarrow.attachEvent)
-   {
+   } else if(rightarrow.attachEvent){
       rightarrow.attachEvent("onclick", rightArrow);
+   }
+
+   var mainFig = document.getElementsByTagName("img")[1];
+
+   if(mainFig.addEventListener) {
+      mainFig.addEventListener("click", zoomFig, false);
+   } else if (mainFig.attachEvent){
+      mainFig.attachEvent("onclick", zoomFig);
    }
 }
 
