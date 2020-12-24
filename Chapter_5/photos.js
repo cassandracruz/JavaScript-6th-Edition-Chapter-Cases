@@ -76,7 +76,8 @@ function previewFive() {
    lastImage.height = "135";
 
    lastFigure.appendChild(lastImage);
-   articleEl.appendChild(lastFigure);
+   //articleEl.appendChild(lastFigure);
+   articleEl.insertBefore(lastFigure, document.getElementById("rightarrow"));
 
    //clone figure element for fifth image and edit to be first image
    var firstFigure = lastFigure.cloneNode(true);
@@ -84,11 +85,12 @@ function previewFive() {
    firstFigure.style.right = "";
    firstFigure.style.left = "45px";
 
-   articleEl.appendChild(firstFigure);
+   //articleEl.appendChild(firstFigure);
+   articleEl.insertBefore(firstFigure, document.getElementById("fig2"));
 
    // add appropriate src values to two new img elements
-   document.getElementsByTagName("img")[3].src = "images/IMG_0" + photoOrder[4] + "sm.jpg";
-   document.getElementsByTagName("img")[4].src = "images/IMG_0" + photoOrder[0] + "sm.jpg";
+   document.getElementsByTagName("img")[0].src = "images/IMG_0" + photoOrder[0] + "sm.jpg";
+   document.getElementsByTagName("img")[4].src = "images/IMG_0" + photoOrder[4] + "sm.jpg";
    figureCount = 5;
 }
 
