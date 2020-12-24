@@ -52,6 +52,8 @@ function leftArrow() {
 
 /* switch to 5-image layout*/
 function previewFive() {
+   var articleEl = document.getElementsByTagName("article")[0];
+
    // create figure and img elements for fifth image
    var lastFigure = document.createElement("figure");
    lastFigure.id = "fig5";
@@ -63,6 +65,10 @@ function previewFive() {
    var lastImage = document.createElement("img");
    lastImage.width = "240";
    lastImage.height = "135";
+
+   lastFigure.appendChild(lastImage);
+   articleEl.appendChild(lastFigure);
+
 }
 
 /* open center figure in separate window */
