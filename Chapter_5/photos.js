@@ -168,7 +168,6 @@ function setUpPage() {
    populateFigures();
 }
 
-
 /* run setUpPage() function when page finishes loading */
 if (window.addEventListener) {
   window.addEventListener("load", setUpPage, false); 
