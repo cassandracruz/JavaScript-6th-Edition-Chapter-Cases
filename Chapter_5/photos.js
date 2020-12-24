@@ -128,6 +128,7 @@ function previewThree(){
 /* open center figure in separate window */
 function zoomFig() {
    var zoomWindow = window.open("zoom.htm", "zoomwin", "width=960,height=600");
+   zoomWindow.focus();
 }
 
 /*create event listeners for left arrow, right arrow, and center figure element */
