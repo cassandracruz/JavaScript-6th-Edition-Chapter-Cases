@@ -62,11 +62,25 @@ function setupDays() {
     }
 }
 
+/*remove fallback placeholder text */
+function zeroPlaceholder(){
+    var messageBox = document.getElementById("customText");
+    messageBox.style.color = "black";
+    if(messageBox.value === messageBox.placeholder) {
+        messageBox.value = "";
+    }
+}
+
 function generatePlaceholder(){
     if(!Modernizr.input.placeholder) {
         var messageBox = document.getElementById("customText");
         messageBox.value = messageBox.placeholder;
         messageBox.style.color = "rgb(178,184,183)";
+        if(messageBox.addEventListener){
+            messageBox.addEventListener("focus", zeroPlaceholder, false);
+        }else if (messageBox.attachEvent) {
+            messageBox.attachEvent("onfocus", zeroPlaceholder);
+        }
     }
 }
 
