@@ -62,6 +62,14 @@ function setupDays() {
     }
 }
 
+function generatePlaceholder(){
+    if(!Modernizr.input.placeholder) {
+        var messageBox = document.getElementById("customText");
+        messageBox.value = messageBox.placeholder;
+        messageBox.style.color = "rgb(178,184,183)";
+    }
+}
+
 /*create event listener */
 function createEventListeners() {
 	var deliveryMonth = document.getElementById("delivMo");
@@ -84,6 +92,7 @@ function setUpPage() {
     removeSelectDefaults();
     setupDays();
     createEventListeners();
+    generatePlaceholder();
 }
 
 /* run setup function when page finishes loading*/
