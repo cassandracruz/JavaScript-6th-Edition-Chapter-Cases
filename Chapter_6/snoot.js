@@ -13,6 +13,7 @@
 var twentyNine = document.createDocumentFragment();
 var thirty = document.createDocumentFragment();
 var thirtyOne = document.createDocumentFragment();
+var formValidity = true;
 
 /* set up node building blocks for selection list of days */
 function setupDays() {
@@ -106,6 +107,8 @@ function autocheckCustom(){
     }
 }
 
+
+
 /* copy values for Billing Address fields to Delivery Address fields */
 function copyBillingAddress() {
     var billingInputElements = document.querySelectorAll("#billingAddress input");
@@ -124,6 +127,26 @@ function copyBillingAddress() {
         document.querySelector("#deliveryAddress select").selectedIndex = -1;
     }
 }
+
+/* validate form */ 
+function validateForm(evt) { 
+    if (evt.preventDefault) { 
+        evt.preventDefault(); // prevent form from submitting 
+    } else {
+        evt.returnValue = false; // prevent form from submitting in IE8 8
+    } 
+    formValidity = true; // reset value for revalidation 
+    // replace with calls to validation functions 
+    if (formValidity === true) { 
+        document.getElementById("errorText").innerHTML = ""; 
+        document.getElementById("errorText").style.display = "none";
+        document.getElementsByTagName("form")[0].submit();
+    }   else {
+        document.getElementById("errorText").innerHTML = "Please fix the indicated problems and then resubmit your order."; 
+        document.getElementById("errorText").style.display = "block";
+        scroll(0,0);
+    }
+}  
 
 /*create event listener */
 function createEventListeners() {
@@ -153,6 +176,13 @@ function createEventListeners() {
         same.addEventListener("click", copyBillingAddress, false);
     } else if (same.attachEvent) {
         same.attachEvent("onclick", copyBillingAddress);
+    }
+
+    var form = document.getElementsByTagName("form")[0];
+    if (form.addEventListener) {
+        form.addEventListener("submit", validateForm, false); 
+    }   else if (form.attachEvent) { 
+        form.attachEvent("onsubmit", validateForm);  
     }
 
 }
