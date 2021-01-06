@@ -128,6 +128,44 @@ function copyBillingAddress() {
     }
 }
 
+/* validate address fieldsets */
+function validateAddress(fieldsetId) {
+    var inputElements = document.querySelectorAll("#" + fieldsetId + " input");
+    var errorDiv = document.querySelectorAll("#"+ fieldsetId + " .errorMessage")[0];
+    var fieldsetValidity = true;
+    var elementCount = inputElements.length;
+    var currentElement;
+
+    try{
+        for (var i = 0; i < elementCount; i++) { 
+            // validate all input elements in fieldset
+            currentElement = inputElements[i];
+            if (currentElement.value === "") {
+                currentElement.style.background = "rgb(255,233,233)";
+                fieldsetValidity = false;
+            } else{
+                currentElement.style.background ="white";
+            }
+        }
+        if (fieldsetValidity === false) { 
+            // throw appropriate message based on current fieldset
+            if (fieldsetId === "billingAddress") {
+                throw "Please complete all Billing Address information.";
+            } else {
+                throw "Please complete all Delivery Address information.";
+            } 
+        } else {
+                errorDiv.style.display ="none";
+                errorDiv.innerHTML ="";
+            }
+        }
+        catch(msg) {   
+            errorDiv.style.display = "block";   
+            errorDiv.innerHTML = msg;    
+            formValidity = false;
+        }
+}
+
 /* validate form */ 
 function validateForm(evt) { 
     if (evt.preventDefault) { 
@@ -137,7 +175,7 @@ function validateForm(evt) {
     } 
     formValidity = true; // reset value for revalidation 
     // replace with calls to validation functions 
-    if (formValidity === true) { 
+ /*if (formValidity === true) { 
         document.getElementById("errorText").innerHTML = ""; 
         document.getElementById("errorText").style.display = "none";
         document.getElementsByTagName("form")[0].submit();
@@ -145,7 +183,9 @@ function validateForm(evt) {
         document.getElementById("errorText").innerHTML = "Please fix the indicated problems and then resubmit your order."; 
         document.getElementById("errorText").style.display = "block";
         scroll(0,0);
-    }
+    }*/
+    validateAddress("billingAddress");
+    validateAddress("deliveryAddress");
 }  
 
 /*create event listener */
