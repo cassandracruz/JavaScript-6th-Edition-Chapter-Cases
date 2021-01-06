@@ -126,8 +126,9 @@ function createEventListeners() {
     if(messageBox.addEventListener) {
         messageBox.addEventListener("blur", autocheckCustom, false);
     } else if (messageBox.attachEvent){
-        messageBox.attachEvent("onblur", autocheckCustom);
+        messageBox.attachEvent("onblur", autocheckCustom) ;
     }
+    
 }
 
 /* run initial form configuration functions */
