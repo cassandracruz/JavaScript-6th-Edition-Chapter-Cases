@@ -71,6 +71,17 @@ function zeroPlaceholder(){
     }
 }
 
+
+/* restore placeholder text if box contains no user entry */
+function checkPlaceholder(){
+    var messageBox = document.getElementById("customText");
+    if(messageBox.value === "") {
+        messageBox.style.color = "rgb(178,184,183)";
+        messageBox.value = messageBox.placeholder;
+    }
+}
+
+
 function generatePlaceholder(){
     if(!Modernizr.input.placeholder) {
         var messageBox = document.getElementById("customText");
@@ -78,8 +89,10 @@ function generatePlaceholder(){
         messageBox.style.color = "rgb(178,184,183)";
         if(messageBox.addEventListener){
             messageBox.addEventListener("focus", zeroPlaceholder, false);
+            messageBox.addEventListener("blur", checkPlaceholder, false);
         }else if (messageBox.attachEvent) {
             messageBox.attachEvent("onfocus", zeroPlaceholder);
+            messageBox.attachEvent("onblur", checkPlaceholder);
         }
     }
 }
