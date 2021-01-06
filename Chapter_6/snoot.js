@@ -97,6 +97,15 @@ function generatePlaceholder(){
     }
 }
 
+/* automatically check Custom message check box if user makes entry in customText box */
+function autocheckCustom(){
+    var messageBox = document.getElementById("customText");
+    if (messageBox.value !== "" && messageBox.value !== messageBox.placeholder){
+        // if user entry in textarea, check Custom check box
+        document.getElementById("custom").checked = "checked";
+    }
+}
+
 /*create event listener */
 function createEventListeners() {
 	var deliveryMonth = document.getElementById("delivMo");
@@ -111,6 +120,13 @@ function createEventListeners() {
 		deliveryYear.addEventListener("change", updateDays, false); 
 	} else if (deliveryYear.attachEvent)  {
 		 deliveryYear.attachEvent("onchange", updateDays);
+    }
+
+    var messageBox = document.getElementById("customText");
+    if(messageBox.addEventListener) {
+        messageBox.addEventListener("blur", autocheckCustom, false);
+    } else if (messageBox.attachEvent){
+        messageBox.attachEvent("onblur", autocheckCustom);
     }
 }
 
