@@ -106,6 +106,25 @@ function autocheckCustom(){
     }
 }
 
+/* copy values for Billing Address fields to Delivery Address fields */
+function copyBillingAddress() {
+    var billingInputElements = document.querySelectorAll("#billingAddress input");
+    var deliveryInputElements = document.querySelectorAll("#deliveryAddress input");
+    if(document.getElementById("sameAddr").checked){
+        for(var i = 0; i < billingInputElements.length; i++)
+        {
+            deliveryInputElements[i + 1].value = billingInputElements[i].value;
+        }
+        document.querySelector("#deliveryAddress select").value = document.querySelector("#billingAddress select").value;
+    }  else {
+        for(var i = 0; i < billingInputElements.length; i++)
+        {
+            deliveryInputElements[i + 1].value = "";
+        }
+        document.querySelector("#deliveryAddress select").selectedIndex = -1;
+    }
+}
+
 /*create event listener */
 function createEventListeners() {
 	var deliveryMonth = document.getElementById("delivMo");
@@ -128,7 +147,14 @@ function createEventListeners() {
     } else if (messageBox.attachEvent){
         messageBox.attachEvent("onblur", autocheckCustom) ;
     }
-    
+
+    var same = document.getElementById("sameAddr");
+    if (same.addEventListener) {
+        same.addEventListener("click", copyBillingAddress, false);
+    } else if (same.attachEvent) {
+        same.attachEvent("onclick", copyBillingAddress);
+    }
+
 }
 
 /* run initial form configuration functions */
