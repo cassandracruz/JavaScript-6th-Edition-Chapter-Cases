@@ -147,6 +147,14 @@ function validateAddress(fieldsetId) {
                 currentElement.style.background ="white";
             }
         }
+        currentElement = document.querySelector("#"+ fieldsetId + " select");
+        // validate state select element
+        if (currentElement.selectedIndex === -1) {
+            currentElement.style.border = "1px solid red";
+            fieldsetValidity = false;
+        } else {
+            currentElement.style.border = "";
+        }
         if (fieldsetValidity === false) { 
             // throw appropriate message based on current fieldset
             if (fieldsetId === "billingAddress") {
@@ -164,6 +172,37 @@ function validateAddress(fieldsetId) {
             errorDiv.innerHTML = msg;    
             formValidity = false;
         }
+}
+
+/* validate delivery date fieldset */ 
+function validateDeliveryDate() {
+    var selectElements = document.querySelectorAll("#deliveryDate select");
+    var errorDiv = document.querySelector("#deliveryDate .errorMessage");
+    var fieldsetValidity = true;
+    var elementCount = selectElements.length;
+    var currentElement;
+    try {
+        for (var i = 0; i < elementCount; i++) { 
+            currentElement = selectElements[i]; 
+            if (currentElement.selectedIndex === -1) { 
+                currentElement.style.border = "1px solid red"; 
+                fieldsetValidity = false;
+            } else {
+                currentElement.style.border = "";
+            }
+        }
+        if (fieldsetValidity === false) {
+            throw "Please specify a delivery date.";
+        } else {
+            errorDiv.style.display = "none";
+            errorDiv.innerHTML = "";
+        }
+    }
+    catch(msg) { 
+        errorDiv.style.display = "block"; 
+        errorDiv.innerHTML = msg; 
+        formValidity = false; 
+    }
 }
 
 /* validate form */ 
@@ -186,6 +225,7 @@ function validateForm(evt) {
     }*/
     validateAddress("billingAddress");
     validateAddress("deliveryAddress");
+    validateDeliveryDate();
 }  
 
 /*create event listener */
