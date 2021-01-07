@@ -144,7 +144,7 @@ function validateAddress(fieldsetId) {
                 currentElement.style.background = "rgb(255,233,233)";
                 fieldsetValidity = false;
             } else{
-                currentElement.style.background ="white";
+                currentElement.style.background = "white";
             }
         }
         currentElement = document.querySelector("#"+ fieldsetId + " select");
@@ -163,8 +163,8 @@ function validateAddress(fieldsetId) {
                 throw "Please complete all Delivery Address information.";
             } 
         } else {
-                errorDiv.style.display ="none";
-                errorDiv.innerHTML ="";
+                errorDiv.style.display = "none";
+                errorDiv.innerHTML = "";
             }
         }
         catch(msg) {   
@@ -219,7 +219,7 @@ function validatePayment() {
         if (!cards[0].checked && !cards[1].checked && !cards[2].checked && !cards[3].checked) { 
             // verify that a card is selected
             for (i = 0; i < 4; i++) {
-                cards[i].style.outline ="1px solid red";
+                cards[i].style.outline = "1px solid red";
             }
             fieldsetValidity = false;
         } else {
@@ -238,10 +238,10 @@ function validatePayment() {
             // verify that a month and year have been selected
             currentElement = selectElements[i];
             if (currentElement.selectedIndex === -1) {
-                currentElement.style.border ="1px solid red";
+                currentElement.style.border = "1px solid red";
                 fieldsetValidity = false;
             } else{
-                currentElement.style.border ="";
+                currentElement.style.border = "";
             }
         }
         if (cvvElement.value === "") {
@@ -273,13 +273,13 @@ function validateMessage() {
         // custom checked but message box empty
         throw "Please enter your message text.";
         } else {
-            errorDiv.style.display ="none";
-            msgBox.style.background ="white";
+            errorDiv.style.display = "none";
+            msgBox.style.background = "white";
         }
     } catch (msg) {
-        errorDiv.style.display ="block";
+        errorDiv.style.display = "block";
         errorDiv.innerHTML = msg;
-        msgBox.style.background ="rgb(255,233,233)";
+        msgBox.style.background = "rgb(255,233,233)";
         formValidity =false;
     }
 }
@@ -294,10 +294,10 @@ function validateCreateAccount() {
     var invColor = "rgb(255,233,233)";
     try {
         // reset styles to valid state
-        usernameElement.style.background ="";
-        pass1Element.style.background ="";
-        pass2Element.style.background ="";
-        errorDiv.style.display ="none"; 
+        usernameElement.style.background = "";
+        pass1Element.style.background = "";
+        pass2Element.style.background = "";
+        errorDiv.style.display = "none"; 
         if ((usernameElement.value !== "" && pass1Element.value !== "" && pass2Element.value !== "")) {
             // all fields are filled
             if (pass1Element.value !== pass2Element.value) { 
@@ -306,7 +306,7 @@ function validateCreateAccount() {
                 throw "Passwords entered do not match; please reenter.";
             }
         }
-        if (!(usernameElement.value === "" && pass1Element.value ===  ""  && pass2Element.value ==="")) {
+        if (!(usernameElement.value === "" && pass1Element.value ===  ""  && pass2Element.value === "")) {
             // not all fields are blank
             throw "Please complete all fields to create an account.";
         }
@@ -314,21 +314,21 @@ function validateCreateAccount() {
         errorDiv.innerHTML = msg;
         errorDiv.style.display ="block";
         if (passwordMismatch) {
-            usernameElement.style.background ="";
+            usernameElement.style.background = "";
             pass1Element.style.background = invColor;
             pass2Element.style.background = invColor;
         } else {
-            if (usernameElement.value ==="") {
+            if (usernameElement.value === "") {
                 usernameElement.style.background = invColor;
             }
-            if (pass1Element.value ==="") {
+            if (pass1Element.value === "") {
                 pass1Element.style.background = invColor;
             }
-            if (pass2Element.value ==="") {
+            if (pass2Element.value === "") {
                 pass2Element.style.background = invColor;
             }
         }
-        formValidity =false;
+        formValidity = false;
     }
 }
 
@@ -365,8 +365,8 @@ function validateNumbers() {
         }
         if (cvvNotNum) {
             cvvElement.style.background ="rgb(255,233,233)";
-            cvvErrMsg.style.display ="block";
-            cvvErrMsg.innerHTML ="The cvv number "+ msg;
+            cvvErrMsg.style.display = "block";
+            cvvErrMsg.innerHTML = "The cvv number "+ msg;
         }
         formValidity =false;
     }
