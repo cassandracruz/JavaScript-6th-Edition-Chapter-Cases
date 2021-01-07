@@ -332,6 +332,46 @@ function validateCreateAccount() {
     }
 }
 
+/* validate number fields for older browsers */
+function validateNumbers() {
+    var ccNotNum; 
+    var cvvNotNum;
+    var ccNumElement = document.getElementById("ccNum");
+    var cvvElement = document.getElementById("cvv");
+    var ccNumErrMsg = document.getElementById("ccNumErrorMessage");
+    var cvvErrMsg = document.getElementById("cvvErrorMessage");
+    try {
+        if (isNaN(ccNumElement.value) || ccNumElement.value === "") {
+            ccNotNum = true;
+        } else { // ccNum value is a number
+            ccNumElement.style.background = "";
+            ccNumErrMsg.style.display = "none";
+        }
+        if (isNaN(cvvElement.value) || cvvElement.value === "") {
+            cvvNotNum = true;
+        } else { // cvv value is a 
+            cvvElement.style.background = "";
+            cvvErrMsg.style.display = "none";
+        }
+        if (ccNotNum || cvvNotNum) {
+            throw "must contain numbers only.";
+        }
+
+    } catch(msg) {
+        if (ccNotNum) {
+            ccNumElement.style.background = "rgb(255,233,233)";
+            ccNumErrMsg.style.display = "block";
+            ccNumErrMsg.innerHTML = "The card number "+ msg;
+        }
+        if (cvvNotNum) {
+            cvvElement.style.background ="rgb(255,233,233)";
+            cvvErrMsg.style.display ="block";
+            cvvErrMsg.innerHTML ="The cvv number "+ msg;
+        }
+        formValidity =false;
+    }
+}
+
 /* validate form */ 
 function validateForm(evt) { 
     if (evt.preventDefault) { 
@@ -356,6 +396,7 @@ function validateForm(evt) {
     validatePayment();
     validateMessage();
     validateCreateAccount();
+    validateNumbers();
 }  
 
 /*create event listener */
